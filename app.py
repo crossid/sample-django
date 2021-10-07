@@ -3,10 +3,8 @@ from base64 import b64encode
 from http import HTTPStatus
 
 from django.conf.urls import url
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden
 from django.template.loader import render_to_string
-from django.utils.decorators import decorator_from_middleware, decorator_from_middleware_with_args
-from django.contrib.auth.decorators import login_required
 from functools import wraps
 
 from client import OIDCClient
