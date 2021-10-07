@@ -49,7 +49,7 @@ def login(request):
     request.session['nonce'] = nonce
     request.session['state'] = state
 
-    auth_url = client.auth_url(state, scope=['openid', 'profile', 'email', 'offline'], nonce = nonce)
+    auth_url = client.auth_url(state, scope=['openid', 'profile', 'email'], nonce = nonce)
 
     return HttpResponseRedirect(auth_url)
 
