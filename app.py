@@ -69,7 +69,8 @@ def handle_callback(request):
 
     id_token = client.decode(tokens.id_token, nonce=saved_nonce)
 
-    logout_url = client.end_session_endpoint + '?id_token_hint=' +  tokens.id_token + '&post_logout_redirect_uri=https://localhost'
+    logout_redirect_url = os.getenv('REDIRECT_URI').replace('/callback', '')
+    logout_url = client.end_session_endpoint + '?id_token_hint=' +  tokens.id_token + '&post_logout_redirect_uri=' + logout_redirect_url
 
     html = render_to_string('post_callback.html', {'name': id_token['name'], 'access_token': tokens.access_token, 'logout_url': logout_url})
 
