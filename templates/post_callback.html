@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
+  <head> </head>
   <body>
     <h1>Hello {{ name }}!</h1>
-    Your access token is: <br/>
-    {{access_token}}<br/>
+    Your access token is: <br />
+    {{access_token}}<br /><br />
+    Try to consume protected resource by:<br /><br />
+    <code style="background-color: gainsboro">
+      export TOKEN=token...
+      <br />
+      curl -H "Authorization: Bearer $TOKEN" {public_url}/protected
+    </code>
+    <br /><br />
     <button><a href="{{logout_url}}">Logout</a></button>
   </body>
 </html>
