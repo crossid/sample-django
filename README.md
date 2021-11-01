@@ -5,7 +5,7 @@ A python with [django](https://www.djangoproject.com/) project that demonstrates
 ## Prerequisites
 
 - Have a Crossid tenant, or [sign up](https://crossid.io/signup) for free.
-- [Create a web application](https://developer.crossid.io/docs/guides/howto/create-web-app)
+- [Add a web application](https://developer.crossid.io/docs/guides/howto/add-web-app)
 
 ## Running locally
 
