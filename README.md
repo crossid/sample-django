@@ -23,8 +23,14 @@ Then you can run the server with
 CLIENT_ID=<client_id>\
 CLIENT_SECRET=<client_secret> \
 REDIRECT_URI=https://localhost/callback \
-ISSUER_BASE_URL=https://<tenant_id>.crossid.io/oauth2/ \
-django-admin runserver --pythonpath=. --settings=app
+ISSUER_BASE_URL=https://<tenant_id>.<region>.crossid.io/oauth2/ \
+django-admin runserver 5000 --pythonpath=. --settings=app
+```
+
+Optionally, if you encounter "requests.exceptions.SSLError", you would need to export
+
+```bash
+REQUESTS_CA_BUNDLE=<path/to/ca-certificates.crt>
 ```
 
 ## Deploying on Digital Ocean

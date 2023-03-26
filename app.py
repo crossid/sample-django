@@ -2,7 +2,7 @@ import os
 from base64 import b64encode
 from http import HTTPStatus
 
-from django.conf.urls import url
+from django.urls import re_path
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseForbidden
 from django.template.loader import render_to_string
 from functools import wraps
@@ -72,7 +72,7 @@ def handle_callback(request):
     logout_redirect_url = os.getenv('REDIRECT_URI').replace('/callback', '')
     logout_url = client.end_session_endpoint + '?id_token_hint=' +  tokens.id_token + '&post_logout_redirect_uri=' + logout_redirect_url
 
-    html = render_to_string('post_callback.html', {'name': id_token['name'], 'access_token': tokens.access_token, 'logout_url': logout_url})
+    html = render_to_string('post_callback.html', {'name': id_token['email'], 'access_token': tokens.access_token, 'logout_url': logout_url})
 
     return HttpResponse(html)
 
@@ -123,8 +123,8 @@ def protected(request):
     return HttpResponse('You are authorized')
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
-    url(r'^login$', login, name='login'),
-    url(r'^callback$', handle_callback, name='handle_callback'),
-    url(r'^protected$', protected, name='protected'),
+    re_path(r'^$', index, name='index'),
+    re_path(r'^login$', login, name='login'),
+    re_path(r'^callback$', handle_callback, name='handle_callback'),
+    re_path(r'^protected$', protected, name='protected'),
 ]
